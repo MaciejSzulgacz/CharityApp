@@ -69,3 +69,11 @@ class AddDonationView(View):
         return render(request, self.template_name, {"current_user": current_user,
                                                     "categories": categories,
                                                     "institutions": institutions})
+
+
+class ProfilView(View):
+    template_name = "charity/profil.html"
+
+    def get(self, request):
+        current_user = request.user
+        return render(request, self.template_name, {"current_user": current_user})
