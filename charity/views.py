@@ -70,6 +70,22 @@ class AddDonationView(View):
                                                     "categories": categories,
                                                     "institutions": institutions})
 
+    def post(self, request):
+        print(">>>>>>>>>")
+        name = request.POST.get('categories')
+        street = request.POST.get('address')
+        city = request.POST.get('city')
+        postcode = request.POST.get('postcode')
+        phone = request.POST.get('phone')
+        print(city)
+        print(phone)
+        print(">>>>>>>>>")
+        return render(request, self.template_name, {"name": name,
+                                                    "address": street,
+                                                    "city": city,
+                                                    "postcode": postcode,
+                                                    "phone": phone})
+
 
 class ProfilView(View):
     template_name = "charity/profil.html"
