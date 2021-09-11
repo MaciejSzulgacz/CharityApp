@@ -2,12 +2,12 @@ from django import forms
 
 
 class CustomUserLoginForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}), label='')
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}), label='')
 
 
 class CustomUserRegisterForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    name = forms.CharField()
-    surname = forms.CharField()
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}), label='')
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}), label='')
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name'}), label='')
+    surname = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Surname'}), label='')

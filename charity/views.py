@@ -32,8 +32,6 @@ class RegisterView(FormView):
         password = cd['password']
         name = cd['name']
         surname = cd['surname']
-        print(name)
-        print(surname)
         CustomUser.objects.create_user(email=email, password=password, name=name, surname=surname)
         return redirect('login')
 
@@ -87,9 +85,9 @@ class AddDonationView(View):
         comments = request.POST.get('comments')
         category = Category.objects.get(id=category_id)
         organization = Institution.objects.get(id=organization_id)
-        new_donation = Donation.objects.create(quantity=bags, institution=organization,
-                                address=address, phone_number=phone, city=city, zip_code=postcode,
-                                pick_up_date=date, pick_up_time=time, pick_up_comment=comments)
+        new_donation = Donation.objects.create(quantity=bags, institution=organization, address=address,
+                                               phone_number=phone, city=city, zip_code=postcode, pick_up_date=date,
+                                               pick_up_time=time, pick_up_comment=comments)
         new_donation.categories.add(category)
         new_donation.save()
         return redirect('form-confirmation')
