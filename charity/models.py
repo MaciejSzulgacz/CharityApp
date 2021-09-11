@@ -43,6 +43,8 @@ class UserManager(DjangoUserManager):
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
+    name = models.CharField(max_length=12, null=True, default=None)
+    surname = models.CharField(max_length=12, null=True, default=None)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

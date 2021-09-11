@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import FormView
 
-from .forms import CustomUserLoginForm
+from .forms import CustomUserLoginForm, CustomUserRegisterForm
 from .models import Category, CustomUser, Donation, Institution
 
 
@@ -23,14 +23,18 @@ class LoginView(FormView):
 
 
 class RegisterView(FormView):
-    form_class = CustomUserLoginForm
+    form_class = CustomUserRegisterForm
     template_name = "charity/register.html"
 
     def form_valid(self, form):
         cd = form.cleaned_data
         email = cd['email']
         password = cd['password']
-        CustomUser.objects.create_user(email=email, password=password)
+        name = cd['name']
+        surname = cd['surname']
+        print(name)
+        print(surname)
+        CustomUser.objects.create_user(email=email, password=password, name=name, surname=surname)
         return redirect('login')
 
 
