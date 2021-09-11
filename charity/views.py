@@ -71,24 +71,36 @@ class AddDonationView(View):
                                                     "institutions": institutions})
 
     def post(self, request):
-        print(">>>>>>>>>")
-        name = request.POST.get('categories')
-        street = request.POST.get('address')
+        bags = request.POST.get('bags')
+        category_id = request.POST.get('categories')
+        organization_id = request.POST.get('organization')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
         city = request.POST.get('city')
         postcode = request.POST.get('postcode')
-        phone = request.POST.get('phone')
-        print(city)
-        print(phone)
-        print(">>>>>>>>>")
-        return render(request, self.template_name, {"name": name,
-                                                    "address": street,
-                                                    "city": city,
-                                                    "postcode": postcode,
-                                                    "phone": phone})
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        comments = request.POST.get('comments')
+        category = Category.objects.get(id=category_id)
+        organization = Institution.objects.get(id=organization_id)
+        new_donation = Donation.objects.create(quantity=bags, institution=organization,
+                                address=address, phone_number=phone, city=city, zip_code=postcode,
+                                pick_up_date=date, pick_up_time=time, pick_up_comment=comments)
+        new_donation.categories.add(category)
+        new_donation.save()
+        return redirect('form-confirmation')
 
 
 class ProfilView(View):
     template_name = "charity/profil.html"
+
+    def get(self, request):
+        current_user = request.user
+        return render(request, self.template_name, {"current_user": current_user})
+
+
+class FormConfirmationView(View):
+    template_name = "charity/form-confirmation.html"
 
     def get(self, request):
         current_user = request.user

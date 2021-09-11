@@ -97,7 +97,7 @@
       <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-        <form action="form-confirmation.html" method="post">
+        <form id="myForm" action="" method="post">
           {% csrf_token %}
           <!-- STEP 1: class .active is switching steps -->
           <div data-step="1" class="active">
@@ -109,7 +109,7 @@
                       id="categories"
                       type="checkbox"
                       name="categories"
-                      value="{{ category }}"
+                      value="{{ category.id }}"
                     />
                     <span class="checkbox"></span>
                     <span class="description"
@@ -131,7 +131,7 @@
             <div class="form-group form-group--inline">
               <label>
                 Liczba 60l worków:
-                <input id="bags" type="number" name="bags" step="1" min="1" />
+                <input id="bags" type="number" name="bags" step="1" min="1"/>
               </label>
             </div>
 
@@ -149,7 +149,7 @@
             {% for institution in institutions %}
                 <div class="form-group form-group--checkbox">
                   <label>
-                    <input id="organization" type="radio" name="organization" value="{{ institution.name }}" />
+                    <input id="organization" type="radio" name="organization" value="{{ institution.id }}" />
                     <span class="checkbox radio"></span>
                     <span class="description">
                       <div class="title">{{ institution.name }}</div>
@@ -174,7 +174,7 @@
               <div class="form-section--column">
                 <h4>Adres odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Ulica <input id="street" type="text" name="address" /> </label>
+                  <label> Ulica <input id="address" type="text" name="address" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
@@ -197,7 +197,7 @@
               <div class="form-section--column">
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Data <input id="date" type="date" name="data" /> </label>
+                  <label> Data <input id="date" type="date" name="date" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
@@ -207,7 +207,7 @@
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <textarea id="comments" name="more_info" rows="5"></textarea>
+                    <textarea id="comments" name="comments" rows="5"></textarea>
                   </label>
                 </div>
               </div>
@@ -246,7 +246,7 @@
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
                   <ul>
-                    <li id="choosen_street">Prosta 51</li>
+                    <li id="choosen_address">Prosta 51</li>
                     <li id="choosen_city">Warszawa</li>
                     <li id="choosen_postcode">99-098</li>
                     <li id="choosen_phone">123 456 789</li>
@@ -309,6 +309,6 @@
     </footer>
 
     <script src="{% static 'js/app.js' %}"></script>
-    <script src=" {% static 'donation.js' %}"></script>
+    <script src="{% static 'donation.js' %}"></script>
   </body>
 </html>

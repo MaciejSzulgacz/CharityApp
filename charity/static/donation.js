@@ -4,7 +4,7 @@ button.addEventListener("click", function (event) {
     let categories = document.querySelector('#categories').value;
     let bags = document.querySelector('#bags').value;
     let organization = document.querySelector('#organization').value;
-    let street = document.querySelector('#street').value;
+    let address = document.querySelector('#address').value;
     let city = document.querySelector('#city').value;
     let postcode = document.querySelector('#postcode').value;
     let phone = document.querySelector('#phone').value;
@@ -15,7 +15,7 @@ button.addEventListener("click", function (event) {
     document.querySelector('#choosen_categories').innerHTML =
         `${bags} worki ${categories} w dobrym stanie dla dzieci`;
     document.querySelector('#choosen_organization').innerHTML = `Dla fundacji ${organization} w Warszawie`;
-    document.querySelector('#choosen_street').innerHTML = street;
+    document.querySelector('#choosen_address').innerHTML = address;
     document.querySelector('#choosen_city').innerHTML = city;
     document.querySelector('#choosen_postcode').innerHTML = postcode;
     document.querySelector('#choosen_phone').innerHTML = phone;

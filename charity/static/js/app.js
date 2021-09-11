@@ -243,7 +243,23 @@ document.addEventListener("DOMContentLoaded", function() {
      * TODO: validation, send data to server
      */
     submit(e) {
-      e.preventDefault();
+      // e.preventDefault();
+      // let myForm = document.querySelector('#myForm');
+      // let formData = new FormData(myForm);
+      // fetch('https://charity.free.beeceptor.com', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: formData,
+      // })
+      // .then(response => response.json())
+      // .then(formData => {
+      //   console.log('Success:', formData);
+      // })
+      // .catch((error) => {
+      //   console.error('Error:', error);
+      // });
       this.currentStep++;
       this.updateForm();
     }
