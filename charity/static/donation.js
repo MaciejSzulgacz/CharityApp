@@ -2,7 +2,7 @@ let button = document.querySelector('#button');
 
 button.addEventListener("click", function (event) {
     let categories = document.querySelector('#categories').value;
-    let bags = document.querySelector('#bags').value;
+    let quantity = document.querySelector('#quantity').value;
     let organization = document.querySelector('#organization').value;
     let address = document.querySelector('#address').value;
     let city = document.querySelector('#city').value;
@@ -13,7 +13,7 @@ button.addEventListener("click", function (event) {
     let comments = document.querySelector('#comments').value;
 
     document.querySelector('#choosen_categories').innerHTML =
-        `${bags} worki ${categories} w dobrym stanie dla dzieci`;
+        `${quantity} worki ${categories} w dobrym stanie dla dzieci`;
     document.querySelector('#choosen_organization').innerHTML = `Dla fundacji ${organization} w Warszawie`;
     document.querySelector('#choosen_address').innerHTML = address;
     document.querySelector('#choosen_city').innerHTML = city;

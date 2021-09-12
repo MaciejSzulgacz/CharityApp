@@ -40,15 +40,18 @@ class LandingPageView(View):
     template_name = "charity/index.html"
 
     def get(self, request):
+        current_user = request.user
         donations = Donation.objects.all()
         institutions = Institution.objects.all()
         quantity = 0
-        sum_of_institutions = 0
+        list_of_donations = []
         for donation in donations:
+            if donation.institution_id not in list_of_donations:
+                list_of_donations.append(donation.institution_id)
             quantity += donation.quantity
-        for _ in institutions:
-            sum_of_institutions += 1
-        return render(request, self.template_name, {"quantity": quantity,
+        sum_of_institutions = len(list_of_donations)
+        return render(request, self.template_name, {"current_user": current_user,
+                                                    "quantity": quantity,
                                                     "sum_of_institutions": sum_of_institutions,
                                                     "institutions": institutions})
 
@@ -73,7 +76,8 @@ class AddDonationView(View):
                                                     "institutions": institutions})
 
     def post(self, request):
-        bags = request.POST.get('bags')
+        print(">>>")
+        quantity = request.POST.get('quantity')
         category_id = request.POST.get('categories')
         organization_id = request.POST.get('organization')
         address = request.POST.get('address')
@@ -85,7 +89,7 @@ class AddDonationView(View):
         comments = request.POST.get('comments')
         category = Category.objects.get(id=category_id)
         organization = Institution.objects.get(id=organization_id)
-        new_donation = Donation.objects.create(quantity=bags, institution=organization, address=address,
+        new_donation = Donation.objects.create(quantity=quantity, institution=organization, address=address,
                                                phone_number=phone, city=city, zip_code=postcode, pick_up_date=date,
                                                pick_up_time=time, pick_up_comment=comments)
         new_donation.categories.add(category)
