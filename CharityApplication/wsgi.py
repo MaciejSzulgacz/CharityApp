@@ -1,5 +1,5 @@
 """
-WSGI config for PortfolioLab_ver2 project.
+WSGI config for CharityApplication project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PortfolioLab_ver2.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CharityApplication.settings')
 
 application = get_wsgi_application()
