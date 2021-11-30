@@ -19,7 +19,7 @@ class LoginView(FormView):
         if user is not None:
             login(self.request, user)
             return redirect('landing_page')
-        return redirect('login')
+        return redirect('register')
 
 
 class RegisterView(FormView):
@@ -97,8 +97,8 @@ class AddDonationView(View):
         return redirect('form-confirmation')
 
 
-class ProfilView(View):
-    template_name = "charity/profil.html"
+class ProfileView(View):
+    template_name = "charity/profile.html"
 
     def get(self, request):
         current_user = request.user
