@@ -63,7 +63,7 @@
                       id="categories"
                       type="checkbox"
                       name="categories"
-                      value="{{ category.id }}"
+                      value="{{ category }}"
                     />
                     <span class="checkbox"></span>
                     <span class="description"
@@ -103,7 +103,7 @@
             {% for institution in institutions %}
                 <div class="form-group form-group--checkbox">
                   <label>
-                    <input id="organization" type="radio" name="organization" value="{{ institution.id }}" />
+                    <input id="organization" type="radio" name="organization" value="{{ institution }}" />
                     <span class="checkbox radio"></span>
                     <span class="description">
                       <div class="title">{{ institution.name }}</div>
@@ -182,16 +182,16 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span id="choosen_categories" class="summary--text"
-                      >4 worki ubrań w dobrym stanie dla dzieci</span
-                    >
+                    <span id="choosen_categories" class="summary--text"/>
+<!--                      >4 worki ubrań w dobrym stanie dla dzieci</span-->
+<!--                    >-->
                   </li>
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span id="choosen_organization" class="summary--text"
-                      >Dla fundacji "Mam marzenie" w Warszawie</span
-                    >
+                    <span id="choosen_organization" class="summary--text"/>
+<!--                      >Dla fundacji "Mam marzenie" w Warszawie</span-->
+<!--                    >-->
                   </li>
                 </ul>
               </div>

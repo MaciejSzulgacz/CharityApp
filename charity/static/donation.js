@@ -13,8 +13,8 @@ button.addEventListener("click", function (event) {
     let comments = document.querySelector('#comments').value;
 
     document.querySelector('#choosen_categories').innerHTML =
-        `${quantity} worki ${categories} w dobrym stanie dla dzieci`;
-    document.querySelector('#choosen_organization').innerHTML = `Dla fundacji ${organization} w Warszawie`;
+        `Liczba worków: ${quantity} w kategorii ${categories} w dobrym stanie dla dzieci`;
+    document.querySelector('#choosen_organization').innerHTML = `Dla fundacji ${organization}`;
     document.querySelector('#choosen_address').innerHTML = address;
     document.querySelector('#choosen_city').innerHTML = city;
     document.querySelector('#choosen_postcode').innerHTML = postcode;

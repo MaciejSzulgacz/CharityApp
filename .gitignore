@@ -1,8 +1,7 @@
 venv/
 .idea/
 CharityApplication/.idea/
-CharityApplication/__pychache__/
 charity/.idea/
-charity/__pychache__/
-__pychache__/
+**/__pychache__
+.pyc
 .env

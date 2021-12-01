@@ -76,10 +76,9 @@ class AddDonationView(View):
                                                     "institutions": institutions})
 
     def post(self, request):
-        print(">>>")
         quantity = request.POST.get('quantity')
-        category_id = request.POST.get('categories')
-        organization_id = request.POST.get('organization')
+        category_name = request.POST.get('categories')
+        organization_name = request.POST.get('organization')
         address = request.POST.get('address')
         phone = request.POST.get('phone')
         city = request.POST.get('city')
@@ -87,8 +86,8 @@ class AddDonationView(View):
         date = request.POST.get('date')
         time = request.POST.get('time')
         comments = request.POST.get('comments')
-        category = Category.objects.get(id=category_id)
-        organization = Institution.objects.get(id=organization_id)
+        category = Category.objects.get(name=category_name)
+        organization = Institution.objects.get(name=organization_name)
         new_donation = Donation.objects.create(quantity=quantity, institution=organization, address=address,
                                                phone_number=phone, city=city, zip_code=postcode, pick_up_date=date,
                                                pick_up_time=time, pick_up_comment=comments)

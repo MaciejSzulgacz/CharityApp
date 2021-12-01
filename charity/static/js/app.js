@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  /**
-   * HomePage - Help section
-   */
+
   class Help {
     constructor($el) {
       this.$el = $el;
@@ -16,18 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     events() {
-      /**
-       * Slide buttons
-       */
+
       this.$buttonsContainer.addEventListener("click", e => {
         if (e.target.classList.contains("btn")) {
           this.changeSlide(e);
         }
       });
 
-      /**
-       * Pagination buttons
-       */
       this.$el.addEventListener("click", e => {
         if (e.target.classList.contains("btn") && e.target.parentElement.parentElement.classList.contains("help--slides-pagination")) {
           this.changePage(e);
@@ -39,14 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
       e.preventDefault();
       const $btn = e.target;
 
-      // Buttons Active class change
       [...this.$buttonsContainer.children].forEach(btn => btn.firstElementChild.classList.remove("active"));
       $btn.classList.add("active");
 
-      // Current slide
       this.currentSlide = $btn.parentElement.dataset.id;
 
-      // Slides active class change
       this.$slidesContainers.forEach(el => {
         el.classList.remove("active");
 
@@ -56,9 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
 
-    /**
-     * TODO: callback to page change event
-     */
+
     changePage(e) {
       e.preventDefault();
       const page = e.target.dataset.page;
@@ -71,9 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
     new Help(helpSection);
   }
 
-  /**
-   * Form Select
-   */
   class FormSelect {
     constructor($el) {
       this.$el = $el;
@@ -88,26 +73,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     createElements() {
-      // Input for value
       this.valueInput = document.createElement("input");
       this.valueInput.type = "text";
       this.valueInput.name = this.$el.name;
 
-      // Dropdown container
       this.dropdown = document.createElement("div");
       this.dropdown.classList.add("dropdown");
 
-      // List container
       this.ul = document.createElement("ul");
 
-      // All list options
       this.options.forEach((el, i) => {
         const li = document.createElement("li");
         li.dataset.value = el.value;
         li.innerText = el.innerText;
 
-        if (i === 0) {
-          // First clickable option
+        if (i === 0) {n
           this.current = document.createElement("div");
           this.current.innerText = el.innerText;
           this.dropdown.appendChild(this.current);
@@ -140,9 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSelect(el);
   });
 
-  /**
-   * Hide elements when clicked on document
-   */
   document.addEventListener("click", function(e) {
     const target = e.target;
     const tagName = target.tagName;
@@ -162,9 +139,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  /**
-   * Switching between form steps
-   */
   class FormSteps {
     constructor(form) {
       this.$form = form;
@@ -180,19 +154,12 @@ document.addEventListener("DOMContentLoaded", function() {
       this.init();
     }
 
-    /**
-     * Init all methods
-     */
     init() {
       this.events();
       this.updateForm();
     }
 
-    /**
-     * All events that are happening in form
-     */
     events() {
-      // Next step
       this.$next.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
@@ -201,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
-      // Previous step
       this.$prev.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
@@ -210,18 +176,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
-      // Form submit
       this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
     }
 
-    /**
-     * Update form front-end
-     * Show next or previous section etc.
-     */
     updateForm() {
       this.$step.innerText = this.currentStep;
-
-      // TODO: Validation
 
       this.slides.forEach(slide => {
         slide.classList.remove("active");
@@ -233,33 +192,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
       this.$step.parentElement.hidden = this.currentStep >= 6;
-
-      // TODO: get data from inputs and show them in summary
     }
-
-    /**
-     * Submit form
-     *
-     * TODO: validation, send data to server
-     */
     submit(e) {
-      // e.preventDefault();
-      // let myForm = document.querySelector('#myForm');
-      // let formData = new FormData(myForm);
-      // fetch('https://charity.free.beeceptor.com', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: formData,
-      // })
-      // .then(response => response.json())
-      // .then(formData => {
-      //   console.log('Success:', formData);
-      // })
-      // .catch((error) => {
-      //   console.error('Error:', error);
-      // });
       this.currentStep++;
       this.updateForm();
     }
